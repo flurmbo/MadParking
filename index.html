@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+    <style>
+      .line {
+        color: blue;
+      }
+      path {
+        fill: none;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Madison Parking lot data</h1>
+    <div>Click on a lot's name in the legend to toggle it on or off.</div>
+    <svg width="960" height="800"></svg>
+    <button onclick="update()">click me!</button>
+    <script
+      src="https://code.jquery.com/jquery-3.4.0.min.js"
+      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
