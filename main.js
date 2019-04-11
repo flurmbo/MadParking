@@ -53,11 +53,6 @@ function drawPlot(data) {
   var yScale = d3
     .scaleLinear()
     .range([height, 0])
-    // .domain(
-    //   d3.extent(data, function(d) {
-    //     return d.lots[0];
-    //   })
-    // )
     .domain(
       d3.extent(
         data.reduce(function(acc, cur) {
@@ -105,6 +100,7 @@ function drawPlot(data) {
           .selectAll("text")
           .attr("text-decoration", "none");
       }
+      update();
     });
 
   lgs
@@ -172,8 +168,15 @@ function update() {
   parseDate = this.parseDate;
   xScale = this.xScale;
   yScale = this.yScale;
+  data = this.data;
 
-  this.yScale.domain([0, 3000]);
+  this.yScale.domain(
+    d3.extent(
+      data.reduce(function(acc, cur) {
+        return [...acc, ...cur.lots.filter((val, index) => shown[index])];
+      }, [])
+    )
+  );
   this.svg
     .selectAll(".yAxis")
     .transition()
